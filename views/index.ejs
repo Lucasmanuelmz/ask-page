@@ -1,0 +1,17 @@
+<%- include('Head'); -%>
+<form action="/" method="post">
+    <div class="container">
+        <label for="question">Pergunta:</label>
+        <input type="text" name="question" id="question"> 
+      </div>
+        <div class="container">
+          <h3 class="text-3xl font-bold underline">
+            Faça uma pergunta
+          </h3>
+        <label for="description">Descrição:</label>
+        <textarea name="description" id="description"></textarea>
+        </div>
+        <button type="submit">Perguntar</button>
+   
+</form>
+<%-include('Footer'); -%>

@@ -1,0 +1,16 @@
+<%-include('Head'); -%>
+<%questions.forEach((question) => {%>
+<div class=" bg-blue-500 text-white p-4">
+<div class="card">
+  <h2>Pergunta</h2>
+  <p><%=question.question %></p>
+</div>
+<div class="card">
+    <h2>Descrição</h2>
+    <p><%= question.description %></p>
+</div>
+<a href="give-answer/<%=question.id%>" class="btn-warning"></a>
+</div>
+<%})%>
+
+<%-include('Footer'); -%>
