@@ -11,17 +11,35 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
+    res.render('index.ejs')
+})
+
+app.post('/post-question', (req, res) => {
     let {question, description} = req.body;
 
     Questions.create({
         question: question,
         description: description
     }).then(() => {
-        res.render('index')
+        res.rederect('/home')
     })
 
 })
 
+app.get('/home', (req, res) => {
+    Questions.findAll({raw: true}).then((question) => {
+        res.render('home.ejs', {
+            question: question
+        })
+    })
+});
+
+app.get('/give-answer/:id', (req, res) => {
+    let id = req.params.id;
+    res.render('answer.ejs', {
+        id: id
+    })
+})
 
 app.listen(port, (error)=> {
      function verifyConnection() {
