@@ -1,0 +1,20 @@
+{
+  "name": "ask-page",
+  "version": "1.0.0",
+  "description": "Aplicação simples de perguntas e respostas. A ideia é que o aplicativo seja simples mas que resolva um problema em que o usuário pode escrever uma pergunta e o administrador ou qualquer outro usuário de uma resposta e a pessoa que enviou a pergunta encontre a resposta. As tecnologias que irei utilizar são: nodes, express, body-parser, sequelize, mysql e ejs.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ask-page"
+  },
+  "author": "Lucas Manuel Alface",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "sequelize": "^6.37.3"
+  }
+}
