@@ -1,13 +1,26 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { Sequelize } = require('sequelize');
+const Questions = require('./database/questionModel');
 
 const port = 3000;
 
 const app = express();
 
 app.set('view engine', 'ejs');
-app.use();
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
+app.get('/', (req, res) => {
+    let {question, description} = req.body;
+
+    Questions.create({
+        question: question,
+        description: description
+    }).then(() => {
+        res.render('index')
+    })
+
+})
 
 
 app.listen(port, (error)=> {
