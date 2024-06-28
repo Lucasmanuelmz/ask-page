@@ -29,7 +29,9 @@ app.post("/post-question", (req, res) => {
 });
 
 app.get("/home", (req, res) => {
-  Questions.findAll({ raw: true }).then((questions) => {
+  Questions.findAll({
+    order: [['id',`DESC`]] 
+  }).then((questions) => {
     res.render("home.ejs", {
       questions: questions,
     });
@@ -45,7 +47,10 @@ app.get("/give-answer/:id", (req, res) => {
   }).then((question) => {
     if(question != undefined) {
       Responses.findAll({
-        where: {question: question.id}
+        where: {
+          question: question.id,
+        },
+        order: [['id', `DESC`]]
       }).then((response) => {
         if(response != undefined) {
           res.render("answer.ejs",{
