@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const Questions = require("./database/questionModel");
+const Responses = require('./database/responseModel');
+const { where } = require("sequelize");
 
 const port = 3000;
 
@@ -36,10 +38,47 @@ app.get("/home", (req, res) => {
 
 app.get("/give-answer/:id", (req, res) => {
   let id = req.params.id;
-  res.render("answer.ejs", {
-    id: id,
-  });
+  Questions.findOne({
+    where: {
+      id: id
+    }
+  }).then((question) => {
+    if(question != undefined) {
+      Responses.findAll({
+        where: {question: question.id}
+      }).then((response) => {
+        if(response != undefined) {
+          res.render("answer.ejs",{
+          question: question,
+          response: response
+        });
+        } else {
+          console.log('Não encontramos nenhuma resposta')
+        }
+      }).catch((erro) => {
+       console.log('Erro ao buscar respostas '+erro)
+      })
+    }
+  }).catch((error) => { 
+    console.log(error)  
+  })
+  
 });
+
+app.post('/response', (req, res) => {
+  console.log(req.body)
+  let { response, question } = req.body;
+  if(response && question) {
+     Responses.create({
+    response: response,
+    question: question
+  }).then(() => {
+    res.redirect('/give-answer/'+question)
+  })
+} else {
+  console.log(`O Não recebemos a resposta para esta pergunta`)
+}
+})
 
 app.listen(port, (error) => {
   function verifyConnection() {
