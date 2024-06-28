@@ -1,2 +1,2 @@
 # ask-page
-Este projeto visa aplicar os meus conhecimentos na seguintes tecnologias: nodes, express, sequelize, body-parser e aprender tailwind css para estilos das páginas front-end. Visto que o foco é o backend só utilizarei tailwind css quando for possível
+Estou muito satisfeito por ter concluído este projeto, onde pude aplicar meus conhecimentos em tecnologias como Node.js, Express e Sequelize no backend. Optei por utilizar o Tailwind CSS apenas quando necessário para estilização do frontend, mantendo o foco principal na parte backend do sistema. Estou animado com o resultado final e pronto para os próximos desafios!
